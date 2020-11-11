@@ -5,7 +5,6 @@ import { evaluate } from "mathjs";
 function App() {
   const [expression, setExpression] = React.useState("0");
   const [status, setStatus] = React.useState(false);
-  const [equalTrigger, setEqualTrigger] = React.useState(false);
   const handleClick = function (value) {
     let newExpression;
     if (status === false) {
