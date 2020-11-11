@@ -5,6 +5,7 @@ import { evaluate } from "mathjs";
 function App() {
   const [expression, setExpression] = React.useState("0");
   const [status, setStatus] = React.useState(false);
+  const [equalTrigger, setEqualTrigger] = React.useState(false);
   const handleClick = function (value) {
     let newExpression;
     if (status === false) {
@@ -26,10 +27,10 @@ function App() {
         setExpression("0");
         setStatus(false);
       } else {
-        setExpression(result);
+        setExpression(result.toString());
       }
     } catch (e) {
-      setExpression("invalid expression, Press AC");
+      setExpression("Math Error");
     }
   };
   const clear = function () {
@@ -37,12 +38,14 @@ function App() {
     setStatus(false);
   };
   const deletefxn = function () {
-    if (expression.length === 1) {
-      setExpression("0");
-      setStatus(false);
-    } else {
-      let exp = expression.slice(0, expression.length - 1);
-      setExpression(exp);
+    if (expression !== "Math Error") {
+      if (expression.length === 1) {
+        setExpression("0");
+        setStatus(false);
+      } else {
+        let exp = expression.slice(0, expression.length - 1);
+        setExpression(exp);
+      }
     }
   };
   return (
@@ -51,69 +54,89 @@ function App() {
       <div id="result">{expression}</div>
       <div id="buttons">
         <div>
-          <button id="clear" onClick={clear}>
+          <button className="btn" id="clear" onClick={clear}>
             AC
           </button>
-          <button id="delete" onClick={deletefxn}>
+          <button className="btn" id="delete" onClick={deletefxn}>
             DELETE
           </button>
-          <button id="equal" onClick={calculate}>
+          <button className="operatorequals" id="equal" onClick={calculate}>
             =
           </button>
-          <button id="divide" onClick={() => handleClick("/")}>
+          <button
+            className="operator"
+            id="divide"
+            onClick={() => handleClick("/")}
+          >
             /
           </button>
         </div>
         <div>
-          <button id="7" onClick={() => handleClick("7")}>
+          <button className="btn" id="7" onClick={() => handleClick("7")}>
             7
           </button>
-          <button id="8" onClick={() => handleClick("8")}>
+          <button className="btn" id="8" onClick={() => handleClick("8")}>
             8
           </button>
-          <button id="9" onClick={() => handleClick("9")}>
+          <button className="btn" id="9" onClick={() => handleClick("9")}>
             9
           </button>
-          <button id="multiply" onClick={() => handleClick("*")}>
+          <button
+            className="operator"
+            id="multiply"
+            onClick={() => handleClick("*")}
+          >
             *
           </button>
         </div>
         <div>
-          <button id="4" onClick={() => handleClick("4")}>
+          <button className="btn" id="4" onClick={() => handleClick("4")}>
             4
           </button>
-          <button id="5" onClick={() => handleClick("5")}>
+          <button className="btn" id="5" onClick={() => handleClick("5")}>
             5
           </button>
-          <button id="6" onClick={() => handleClick("6")}>
+          <button className="btn" id="6" onClick={() => handleClick("6")}>
             6
           </button>
-          <button id="subtract" onClick={() => handleClick("-")}>
+          <button
+            className="operator"
+            id="subtract"
+            onClick={() => handleClick("-")}
+          >
             -
           </button>
         </div>
         <div>
-          <button id="1" onClick={() => handleClick("1")}>
+          <button className="btn" id="1" onClick={() => handleClick("1")}>
             1
           </button>
-          <button id="2" onClick={() => handleClick("2")}>
+          <button className="btn" id="2" onClick={() => handleClick("2")}>
             2
           </button>
-          <button id="3" onClick={() => handleClick("3")}>
+          <button className="btn" id="3" onClick={() => handleClick("3")}>
             3
           </button>
-          <button id="add" onClick={() => handleClick("+")}>
+          <button
+            className="operator"
+            id="add"
+            onClick={() => handleClick("+")}
+          >
             +
           </button>
         </div>
         <div>
-          <button id="0" onClick={() => handleClick("0")}>
+          <button className="btn0" id="0" onClick={() => handleClick("0")}>
             0
           </button>
-          <button id="dot" onClick={() => handleClick(".")}>
+          <button className="btndot " id="dot" onClick={() => handleClick(".")}>
             .
           </button>
-          <button id="percentile" onClick={() => handleClick("%")}>
+          <button
+            className="operator"
+            id="percentile"
+            onClick={() => handleClick("%")}
+          >
             %
           </button>
         </div>
