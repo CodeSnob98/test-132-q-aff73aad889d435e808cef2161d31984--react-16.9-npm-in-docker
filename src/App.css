@@ -53,26 +53,34 @@ body {
   height: 10vh;
   font-size: 20px;
 }
-.btn0{
+.btn0 {
   width: 50vh;
   height: 10vh;
   font-size: 20px;
 }
-.btndot{
+.btndot {
   width: 25vh;
   height: 10vh;
   font-size: 20px;
 }
-.operator{
+.btn:hover {
+  background: orange;
+}
+.btn0:hover {
+  background: orange;
+}
+.btndot:hover {
+  background: orange;
+}
+.operator {
   width: 25vh;
   height: 10vh;
   font-size: 20px;
-  background:orangered;
+  background: orangered;
 }
-.operatorequals{
+.operatorequals {
   width: 25vh;
   height: 10vh;
   font-size: 20px;
-  background:green;
+  background: green;
 }
-
