@@ -6,21 +6,27 @@ function App() {
   const [expression, setExpression] = React.useState("0");
   const [status, setStatus] = React.useState(false);
   const handleClick = function (value) {
-    let newExpression;
-    if (status === false) {
-      newExpression = value;
-      let st1 = true;
-      setStatus(st1);
-    } else {
-      newExpression = expression.toString() + value;
+    if (expression !== "Math Error") {
+      let newExpression;
+      if (status === false) {
+        newExpression = value;
+        let st1 = true;
+        setStatus(st1);
+      } else {
+        newExpression = expression.toString() + value;
+      }
+      setExpression(newExpression);
     }
-    setExpression(newExpression);
   };
   const calculate = function () {
     let result;
     try {
       result = evaluate(expression);
-      if (result === Infinity || result === -Infinity) {
+      if (
+        result === Infinity ||
+        result === -Infinity ||
+        result.toString() === "NaN"
+      ) {
         setExpression("Math Error");
       } else if (result === 0) {
         setExpression("0");
